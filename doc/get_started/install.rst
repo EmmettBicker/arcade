@@ -10,21 +10,26 @@ Install
 
 Requirements
 ------------
+:mod:`pyglet`
 
 All systems require Python 3.9 or higher on a desktop or laptop device.
 
-.. important:: Yes, this means and mobile are currently unsupported.
-
-               Please see the following to learn more:
-
-               * :ref:`Web browsers <faq_web>`
-               * :ref:`Android <faq_android>`, :ref:`iOS <faq_ios>`, and :ref:`iPad <faq_ipad>`
-
+:ref:`Web <faq_web>` and :ref:`mobile <faq_mobile>` are currently
+unsupported.
 
 Windows, Linux, and Intel Mac
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Convertibles with Intel or AMD processors under 10 years old will likely work.
+Your computer can likely run Arcade if it supports Python 3.9 or higher.
+
+In general, even older convertible Windows tablets will work as long as they:
+
+#. have an Intel or AMD processor
+#. were made in the last 10 years
+
+.. note:: ARM-based Windows or Linux tablets may have issues.
+
+          These devices may or may not work.  the :ref:`requirements_raspi`
 
 Windows
 """""""
@@ -50,22 +55,17 @@ can always :ref:`ask for help. <how-to-get-help>`.
 
 .. _requirements_raspi:
 
-Raspberry Pi
-""""""""""""
-For Raspberry Pi boards:
+Raspberry Pi and Other ARM SBCs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* The 4, 400, and 5 series are known to work under Linux
-* None of the Zero, Pico, 3, or any earlier models work
+The Arcade and :py:mod:`pyglet` teams have verified the Raspberry Pi 4 and 5
+as working. The Raspberry Pi 400 will also likely work, but other Pi models will not.
 
-The compatible Pi boards all support OpenGL ES 3.1 plus certain extensions. Other brands
-of SBCs which support the same features may work, but the Arcade and :py:mod:`pyglet` teams
-have not tested any. If your code uses an OpenGL ES feature which is not suported by your board,
-your code will fail, but it should not damage your board.
+To learn more, please see:
 
-To learn more, please see the `pyglet manual page on OpenGL ES <pyglet-opengles>`_.
+* :ref:`faq-raspi`
+* :ref:`sbc_supported_raspi`
 
-.. pending: post-3.0 cleanup # Faster and more reliable than getting the external ref syntax to work
-.. _pyglet-opengles: https://pyglet.readthedocs.io/en/development/programming_guide/opengles.html
 
 Using pip
 ---------

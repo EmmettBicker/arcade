@@ -37,39 +37,59 @@ Can Arcade run on...?
 ---------------------
 
 Windows, Mac, and Linux
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes. Most hardware with an Intel or AMD processor from the last ten years will do fine.
 New :ref:`requirements_mac_mseries` can have some hiccups, but they generally work.
 
 .. _faq-raspi:
 
-Raspberry Pi 4 and 5
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Raspberry Pi and Other SBCs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following Raspberry Pi models are known to work under Linux:
+Raspberry Pi is a popular brand of Single Board Computers (SBCs).
 
-* `Raspberry Pi 4 <https://www.raspberrypi.com/products/raspberry-pi-4-model-b/>`_
-* `The Raspberry Pi 400 <https://www.raspberrypi.com/products/raspberry-pi-400/>`_ (Keyboard-embedded Pi 4)
-* `The Raspberry Pi 5 <https://www.raspberrypi.com/products/raspberry-pi-5/>`_
+The Raspberry Pi 4 and 5 are known support Arcade under `Raspberry Pi OS`_,
+and the Raspberry Pi 400 *may* also work. As of October 2024,
+:ref:`All other other Raspberry Pi models are incompatible <sbc_raspi_unsupported>`.
 
-Almost all features will work with the exception of advanced shaders. Similar SBCs may
-also work. To learn more, please see :ref:`requirements_raspi`.
+Other SBCs *may* work with Arcade 3.0.0. See the :ref:`sbc_requirements` to learn more.
 
 .. _faq_web:
 
 Web
 ^^^
+Not yet. For the moment, the Arcade and `pyglet`_ teams are eagerly
+watching ongoing developments in `WebGPU`_ and its `WASM`_ integrations.
 
-Not yet. This may be possible in the future, but it will require a lot of work.
+.. _WebGPU: https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API
+.. _WASM: https://developer.mozilla.org/en-US/docs/WebAssembly
+
+.. _faq_mobile:
+
+Mobile
+^^^^^^
+Not in the near future. Supporting mobile requires big changes to both
+Arcade and the `pyglet`_ library we use.
 
 .. _faq_android:
+
+Android
+"""""""
+Android support will take a huge amount of work:
+
+#. `pyglet`_ would need to account for mobile-specific OS behavior
+#. Arcade would need to make changes to account for mobile as well
+#. Not all devices will support the necessary :ref:`OpenGL ES versions <requirements_gles>`.
+
 .. _faq_ios:
 .. _faq_ipad:
 
-Android, iOS, or iPad
-^^^^^^^^^^^^^^^^^^^^^
+iOS and iPad
+""""""""""""
 
-Not in the foreseeable future. Android is possible, but it will take a lot of work. Both iPad and
-iOS are much trickier to implement than Android support. For mobile, you may want to try another
-framework.
+Not in the foreseeable future. They are much trickier than web or Android
+for a number of reasons. For near-future iOS and iPad support, you may want to
+to try `Kivy`_.
+
+.. _Kivy: https://kivy.org
