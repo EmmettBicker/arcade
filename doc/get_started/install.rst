@@ -42,8 +42,8 @@ To avoid strange issues, install Python as follows:
 
 .. important:: Avoid the Microsoft Store version of Python.
 
-               It has a history of hard-to-fix bugs which will make things
-               far more difficult than they need to be.
+               It has a history of hard-to-fix bugs which make
+               development more difficult than it needs to be.
 
 .. _requirements_mac_mseries:
 
