@@ -137,6 +137,7 @@ help improve Arcade.
    programming_guide/texture_atlas
    programming_guide/resource_handlers
    programming_guide/opengl_notes
+   programming_guide/gles_raspi_and_sbc
    programming_guide/performance_tips
    programming_guide/headless
 
