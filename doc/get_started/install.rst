@@ -49,8 +49,8 @@ To avoid strange issues, install Python as follows:
 
 M-Series Macs
 """""""""""""
-Macs with Apple's M-series processors were first introduced in 2020. These mostly work aside from
-a few issues related to window focus and unsigned applications. If something odd happens, you
+Apple first released Macs with M-series processors in 2020. They may have a few
+issues with window focus and unsigned applications. If something odd happens, you
 can always :ref:`ask for help. <how-to-get-help>`.
 
 .. _requirements_raspi:
