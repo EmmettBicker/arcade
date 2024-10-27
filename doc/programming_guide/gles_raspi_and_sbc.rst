@@ -130,7 +130,7 @@ Both Arcade and `pyglet`_ can run via OpenGL ES on devices with either:
 
 * OpenGL ES 3.2 or higher
 * OpenGL ES 3.1 with certain extensions
-\
+
 To learn more, please see the `pyglet manual page on OpenGL ES <pyglet-opengles>`_.
 
 .. pending: post-3.0 cleanup # Faster and more reliable than getting the external ref syntax to work
