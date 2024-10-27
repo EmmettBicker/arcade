@@ -29,7 +29,7 @@ It doesn't matter whether you've started :ref:`the platformer tutorial <platform
 or just happen to be looking around. Let us know if anything looks off.
 
 The best ways to report it are via `Discord <Arcade Discord>`_
-or `GitHub <Arcade GitHub>`_, but we also have other
+or the `Arcade GitHub`_ repository, but we also have other
 :ref:`community-locations`.
 
 To be clear, all of the following are worth reporting:
