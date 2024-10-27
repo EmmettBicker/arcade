@@ -7,16 +7,34 @@
 .. 1. the pyglet doc (use :py:mod:`pyglet` / etc to auto-link the right version)
 .. 2. links to files in the Arcade GitHub repo (use the conf.py + base URLs) (See https://github.com/pythonarcade/arcade/issues/2387)
 
-.. _CC0: https://creativecommons.org/publicdomain/#publicdomain-cc0-10
-.. _Creative Commons licenses: https://creativecommons.org/share-your-work/cclicenses/
-
-.. _Chipmunk2D: https://chipmunk-physics.net/
+.. Dependencies
 .. _Pymunk: https://www.pymunk.org/en/latest/index.html
-.. _Kenney_nl: https://kenney.nl/
+.. _pyglet: https://pyglet.readthedocs.io/en/development/
+.. Transitive dependency (heart of Pymunk)
+.. _Chipmunk2D: https://chipmunk-physics.net/
 
+.. Arcade-specific links
 .. _Arcade book: https://learn.arcade.academy/
 .. _PyPI: https://pypi.org/project/arcade/
 .. _Arcade GitHub: https://github.com/pythonarcade/arcade/
 .. _Arcade Discord: https://discord.gg/ZjGDqMp
 .. _Twitter: https://x.com/ArcadeLibrary
 .. _Reddit: https://www.reddit.com/r/pythonarcade/
+
+.. Arcade-related community engagement stuff
+.. _PyWeek: https://pyweek.org/
+.. _The Python Discord: https://www.pythondiscord.com/
+.. _Kenney_nl: https://kenney.nl/
+
+.. Concepts
+.. _CC0: https://creativecommons.org/publicdomain/#publicdomain-cc0-10
+.. _Creative Commons licenses: https://creativecommons.org/share-your-work/cclicenses/
+
+.. Licensing
+.. _BibTeX: https://www.bibtex.org/Format/
+
+.. Hardware / Software
+.. _rpi_4: https://www.raspberrypi.com/products/raspberry-pi-4-model-b/
+.. _rpi_400: https://www.raspberrypi.com/products/raspberry-pi-400/
+.. _rpi_5: https://www.raspberrypi.com/products/raspberry-pi-5/
+.. _Raspberry Pi OS: https://www.raspberrypi.com/software/
