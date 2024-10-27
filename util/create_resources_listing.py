@@ -274,7 +274,6 @@ def process_resource_directory(out, dir: Path):
             out.write(f"   <code class=\"literal resource-category\">{resource_handle}</code>\n")
 
             # pending: post-3.0 cleanup?
-            # ┬─┬ノ( º _ ºノ) <( We're leaving the tables here for now. Grid can be touch )
             #out.write(f".. list-table:: \"{header_title}\"\n")
             out.write(f".. list-table::\n")
             out.write(f"    :widths: {widths}\n")
