@@ -51,7 +51,7 @@ Raspberry Pi is a popular brand of Single Board Computers (SBCs).
 
 The Raspberry Pi 4 and 5 are known support Arcade under `Raspberry Pi OS`_,
 and the Raspberry Pi 400 *may* also work. As of October 2024,
-:ref:`All other other Raspberry Pi models are incompatible <sbc_raspi_unsupported>`.
+:ref:`All other other Raspberry Pi models are incompatible <sbc_unsupported_raspis>`.
 
 Other SBCs *may* work with Arcade 3.0.0. See the :ref:`sbc_requirements` to learn more.
 
