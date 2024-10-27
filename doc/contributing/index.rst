@@ -63,6 +63,7 @@ through game jams or game asset communities.
 * Various pixel art communities exist on Discord and Reddit
 
 .. _contributing-bug-reports:
+
 Report Bugs
 -----------
 
