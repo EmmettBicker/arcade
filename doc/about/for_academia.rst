@@ -1,147 +1,145 @@
 .. _academia:
 
-For Researchers & Instructors
-=============================
+For Educators & Researchers
+===========================
 
 .. _citation template: https://github.com/pythonarcade/arcade#citation
 
 Python Arcade was created by Paul V. Craven while teaching at Simpson College.
 
-In addition to the primary documentation you are currently viewing,
-there are further resources and affordances for academic users.
-These include:
+In addition to the main Arcade 3.0 documentation you are currently reading, there
+are further resources to help academic users. These include:
 
-* A `citation template`_ in Arcade's GitHub landing page
-* An `Arcade book`_ by the framework's creator
-* Many third-party libraries and tutorials
+* The :ref:`citation template <academia_citations>`
+* A companion :ref:`academia_arcade_book` by Arcade's creator
+* Potential 2.6.X maintenance releases to support curricula using Arcade 2.6
+
 
 .. _academia_citations:
 
-The Citation Template
----------------------
+Citation Template
+-----------------
 
-The `citation template`_ in the ``README.md`` uses `BibTeX`_ format.
-For other citation formats, please consult the appropriate style guide or
-converter manual.
+Arcade provides a `citation template`_ in `BibTeX`_ format.
+
+To learn more about using this template, please consult the following:
+
+* the documentation of your reference management tool
+* any style guides you are required to follow
 
 
 .. _academia_version_2v3:
 
 Version Considerations
 ----------------------
+Most users will be better off using Arade 3.0.
 
-Educators may prefer Arcade ``2.6.X`` over ``3.0.0`` due to its mature
-documentation.
+The main case for continuing to use ``2.6.X`` releases is reliance on teaching
+materials which have not yet been updated, including the :ref:`academia_arcade_book`.
 
-The Companion Book
-^^^^^^^^^^^^^^^^^^
 
-Arcade 2.6 has an instructor-designed `companion book <Arcade book>`_. Although
-the documentation you're reading now also aims to be an all-ages document, it
-lacks the translations and clear curriculum structure provided by the book. It
-integrates these with crucial materials:
+.. _academia_arcade_book:
 
-* embedded videos demonstrating both concepts and past student projects
-* a gentle introduction to industry-standard tools which often intimidate CS graduates
-* languages and CS topics applicable at the univerity level and beyond
+Arcade Book
+^^^^^^^^^^^
 
-.. list-table:: Differences from Arcade's Main Documentation
-   :header-rows: 1
+The creator of Arcade wrote an `Arcade book`_ which covers Python basics in greater depth
+than the main Arcade documentation.
 
-   * - Aspect
-     - Main Documentation
-     - Arcade Companion Book
 
-   * - Near-Term Target Version
-     - 3.0.0+
-     - 2.6.X
+It may be some time until the `Arcade book`_ is updated for Arcade 3.0. Doing so requires a
+separate effort after the 3.0 release due to the the scale and number of changes since
+Arcade 2.6.
 
-   * - Structure Level
-     - Low
-     - High
 
-   * - Translation
-     - None
-     - `Swedish / Svenska <book_sv>`_, `German / Deutsche <book_de>`_
+Similarities to this Documentation
+""""""""""""""""""""""""""""""""""
 
-.. _book_sv: https://learn.arcade.academy/sv/latest/
-.. _book_de: https://learn.arcade.academy/de/latest/
+Both the book and the documentation you are currently reading provide:
+
+* all-ages learning resources
+* gentle introductions to Python and Arcade
+
+
+Differences from this Documentation
+"""""""""""""""""""""""""""""""""""
+
+The book caters more heavily to beginners and educators by providing the following
+in a traditional chapter and curriculum structure:
+
+#. Embedded videos covering concepts and past student projects
+#. Lab exercises to help apply chapter material through practice
+#. Translations in `Swedish / Svenska <book_sv>`_ and `German / Deutsche <book_de>`_
+
+It also offers gentle, beginner-friendly introductions to topics which can intimidate
+even the graduates of college-level computer science programs:
+
+#. Editors and development environments
+#. Industry-standard version control tools
+#. CS topics applicable at college-level and beyond
+
 
 .. _2_6_maintenance:
 
-2.6.X Maintenance
------------------
+2.6.X Maintenance?
+------------------
 
-The Arcade team is exploring maintenance-only releases for 2.6.X. The goals
-for these releases would be the following:
+The Arcade team is exploring additional *maintenance-only* releases for 2.6.X.
+
+The goals for these still-hypothetical releases would be:
 
 #. Security updates
 #. Compatibility with newer Python versions
 #. Highly limited bug fixes
 
-New features are not a priority unless crucial for security or compatibility.
+Since the Arcade team's focus is on improving Arcade 3.0, no new features will be added
+unless at least one of the following is true:
 
-
-A Computer Lab on a Budget
---------------------------
-
-This section is provides a starting point for educators who:
-
-* aim to teach programming workshops for 5-15 students
-* have not yet acquired the hardware to do so
-* wish to make effective use of their budget
-
-It is not a step-by-step guide because it is impossible to make
-one general enough.
-
-General Considerations
-^^^^^^^^^^^^^^^^^^^^^^
-
-If you do not already have network infrastructure to plug into,
-you may want to budget for router and a cheap switch. This isn't
-for multiplayer, but for downloading packages or boot images to
-user machines.
-
-For younger students, be sure to limit unsupervised network access. You
-may also need to allocate time to cover the basics of file and folder
-structures since many students now grow up with mobile devices rather
-than traditional PCs.
-
-For offline work, this list of `PyPI mirror tools`_ may be helpful.
-
-.. _PyPI mirror tools: https://packaging.python.org/en/latest/guides/index-mirrors-and-caches/#existing-projects
-
-
-Surplus Hardware
-^^^^^^^^^^^^^^^^
-This is often the best option and sometimes the only one.
-
-Even if a device does not have, many enterprise-oriented desktop PCs
-from the past decade can be revived with a low-resource Linux installation.
+* It is required for a security or compatibilty improvement
+* The effort required is minimal
 
 
 Raspberry Pi and other SBCs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
-Single-Board Computers (SBCs) such as the Raspberry Pi 4 and 5
+For educators, Single-Board Computers (SBCs) such as the Raspberry Pi 4 and 5
 are not always the most cost-effective option.
 
-However, they may be worth considering when one or more of the
-following applies:
+However, they may be an attractive option when at least one of the following
+applies:
 
-* Surplus hardware isn't an option
 * You have an educational discount
 * You have grant or non-profit funding
+* Surplus hardware isn't an option
+
 
 .. _sbc_rule_of_thumb:
 
-SBC Rules of Thumb
-^^^^^^^^^^^^^^^^^^
+SBC Purchasing Rules of Thumb
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-ARM64 and AMD64 CPUs Will Be Easier
-"""""""""""""""""""""""""""""""""""
-RISC systems *may* work, but such SBCs do not have the same amount
-of beginner-friendly community around them.
+.. note:: These rules help **non-experts** steer toward Arcade-copatible devices.
+
+          You can find more in-depth descriptions of the required OpenGL ES versions
+          and more under the :ref:`sbc_requirements` heading.
+
+
+ARM64 and AMD64 are Easiest
+"""""""""""""""""""""""""""
+
+The :ref:`known-working Raspberry Pi 4 and 5 <sbc_supported_raspi>` are both ARM64
+devices. If you are considering other boards due to price or availability, stick to
+the following CPU architectures:
+
+* ARM64
+* AMD64 (same as most non-Mac desktop CPUs)
+
+No RISC-based SBC has been verified as compatible. Although some *may* work,
+SBCs based on RISC-V CPUs are likely to lack:
+
+* introductory tutorials
+* beginner-friendly documentation 
+
 
 
 Credit Card Rule
