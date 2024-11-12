@@ -176,7 +176,7 @@ class TextureArray:
 
         gl.glBindTexture(self._target, self._glo)
 
-        self._texture_2d(data)
+        self._texture_2d_array(data)
 
         # Only set texture parameters on non-multisample textures
         if self._samples == 0:
@@ -207,14 +207,14 @@ class TextureArray:
 
         self._width, self._height = size
 
-        self._texture_2d(None)
+        self._texture_2d_array(None)
 
     def __del__(self):
         # Intercept garbage collection if we are using Context.gc()
         if self._ctx.gc_mode == "context_gc" and self._glo.value > 0:
             self._ctx.objects.append(self)
 
-    def _texture_2d(self, data):
+    def _texture_2d_array(self, data):
         """Create a 2D texture"""
         # Start by resolving the texture format
         try:
@@ -884,6 +884,6 @@ class TextureArray:
         return handle
 
     def __repr__(self) -> str:
-        return "<Texture glo={} size={}x{} components={}>".format(
-            self._glo.value, self._width, self._height, self._components
+        return "<TextureArray glo={} size={}x{}x{} components={}>".format(
+            self._glo.value, self._width, self._layers, self._height, self._components
         )
