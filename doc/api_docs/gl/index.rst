@@ -40,6 +40,7 @@ directory (git).
 
    context
    texture
+   texture_array
    buffer
    geometry
    framebuffer
