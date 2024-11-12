@@ -356,9 +356,9 @@ class TextureArray:
         return self._dtype
 
     @property
-    def size(self) -> tuple[int, int]:
+    def size(self) -> tuple[int, int, int]:
         """The size of the texture as a tuple"""
-        return self._width, self._height
+        return self._width, self._height, self._layers
 
     @property
     def samples(self) -> int:
@@ -633,9 +633,10 @@ class TextureArray:
             gl.glPixelStorei(gl.GL_PACK_ALIGNMENT, alignment)
 
             buffer = (
-                gl.GLubyte * (self.width * self.height * self._component_size * self._components)
+                gl.GLubyte
+                * (self.width * self.height * self.layers * self._component_size * self._components)
             )()
-            gl.glGetTexImage(gl.GL_TEXTURE_2D, level, self._format, self._type, buffer)
+            gl.glGetTexImage(self._target, level, self._format, self._type, buffer)
             return string_at(buffer, len(buffer))
         elif self._ctx.gl_api == "gles":
             # FIXME: Check if we can attach a layer to the framebuffer. See Texture2D.read()
@@ -644,7 +645,7 @@ class TextureArray:
             raise ValueError("Unknown gl_api: '{self._ctx.gl_api}'")
 
     def write(self, data: BufferOrBufferProtocol, level: int = 0, viewport=None) -> None:
-        """Write byte data from the passed source to the texture.
+        """Write byte data into layers of the texture.
 
         The ``data`` value can be either an
         :py:class:`arcade.gl.Buffer` or anything that implements the
@@ -660,22 +661,32 @@ class TextureArray:
             data:
                 :class:`~arcade.gl.Buffer` or buffer protocol object with data to write.
             level:
-                The texture level to write
-            viewport:
-                The area of the texture to write. 2 or 4 component tuple.
+                The texture level to write (LoD level, now layer)
+            viewport (optional):
+                The area of the texture to write. Should be a 3 or 5-component tuple
+                `(x, y, layer, width, height)` writes to an area of a single layer.
+                If not provided the entire texture is written to.
         """
         # TODO: Support writing to layers using viewport + alignment
         if self._samples > 0:
             raise ValueError("Writing to multisampled textures not supported")
 
-        x, y, w, h = 0, 0, self._width, self._height
+        x, y, l, w, h = (
+            0,
+            0,
+            0,
+            self._width,
+            self._height,
+        )
         if viewport:
-            if len(viewport) == 2:
-                w, h = viewport
-            elif len(viewport) == 4:
-                x, y, w, h = viewport
+            # TODO: Add more options here. For now we support writing to a single layer
+            #       (width, hight, num_layers) is a suggestion from moderngl
+            # if len(viewport) == 3:
+            #     w, h, l = viewport
+            if len(viewport) == 5:
+                x, y, l, w, h = viewport
             else:
-                raise ValueError("Viewport must be of length 2 or 4")
+                raise ValueError("Viewport must be of length 5")
 
         if isinstance(data, Buffer):
             gl.glBindBuffer(gl.GL_PIXEL_UNPACK_BUFFER, data.glo)
@@ -683,22 +694,24 @@ class TextureArray:
             gl.glBindTexture(self._target, self._glo)
             gl.glPixelStorei(gl.GL_PACK_ALIGNMENT, 1)
             gl.glPixelStorei(gl.GL_UNPACK_ALIGNMENT, 1)
-            gl.glTexSubImage2D(self._target, level, x, y, w, h, self._format, self._type, 0)
+            gl.glTexSubImage3D(self._target, level, x, y, w, h, l, self._format, self._type, 0)
             gl.glBindBuffer(gl.GL_PIXEL_UNPACK_BUFFER, 0)
         else:
             byte_size, data = data_to_ctypes(data)
-            self._validate_data_size(data, byte_size, w, h, self._layers)
+            self._validate_data_size(data, byte_size, w, h, 1)  # Single layer
             gl.glActiveTexture(gl.GL_TEXTURE0 + self._ctx.default_texture_unit)
             gl.glBindTexture(self._target, self._glo)
             gl.glPixelStorei(gl.GL_PACK_ALIGNMENT, 1)
             gl.glPixelStorei(gl.GL_UNPACK_ALIGNMENT, 1)
-            gl.glTexSubImage2D(
+            gl.glTexSubImage3D(
                 self._target,  # target
                 level,  # level
                 x,  # x offset
                 y,  # y offset
+                l,  # layer
                 w,  # width
                 h,  # height
+                1,  # depth (one layer)
                 self._format,  # format
                 self._type,  # type
                 data,  # pixel data

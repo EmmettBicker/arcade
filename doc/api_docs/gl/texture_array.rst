@@ -1,10 +1,10 @@
 
 .. py:currentmodule:: arcade
 
-Sampler
-=======
+TextureArray
+============
 
-.. autoclass:: arcade.gl.Sampler
+.. autoclass:: arcade.gl.TextureArray
    :members:
    :undoc-members:
    :show-inheritance:
