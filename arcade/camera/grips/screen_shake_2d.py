@@ -42,10 +42,11 @@ class ScreenShake2D:
             the target frame-rate. (e.g. at 60 fps avoid 30, 60, 90, 120, etc.)
         shake_angle:
             The angle around which the shake will focus. Defaults to 0 (horizontal)
+            This is actuall 0 or 180 degress as the shake angle is mirrored.
         shake_range:
             The range in degrees from the shake angle that the shake may fall within.
-            defaults to 90 degrees. This gives a range of +/- 90 degrees which covers the full circle because
-            the shake is mirrored across the circle.
+            defaults to 90 degrees. This gives a range of +/- 90 degrees which covers the
+            full circle because the shake angle is mirrored 180 degrees.
     """
 
     def __init__(
@@ -286,7 +287,8 @@ class ScreenShake2D:
             floor(self._last_update_time * 2 * self.shake_frequency)
             < floor(self._length_shaking * 2.0 * self.shake_frequency)
         ) or self._last_update_time == 0.0:
-            # Start from the shake angle and then offset by the reflected shake range, then randomly pick whether to mirror to the other side.
+            # Start from the shake angle and then offset by the reflected shake range,
+            # then randomly pick whether to mirror to the other side.
             self._current_dir = (
                 self.shake_angle
                 + uniform(-self.shake_range, self.shake_range)
