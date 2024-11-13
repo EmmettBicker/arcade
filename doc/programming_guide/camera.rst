@@ -5,8 +5,8 @@ Introduction
 ------------
 
 This guide aims to help you understand how cameras in modern games work without going in-depth on the maths.
-Whenever concepts are glossed over links to external sources will be provided. The understanding this guide will provided
-should carry over into any game making applications.
+Whenever concepts are glossed over links to external sources will be provided. The understanding this guide will provide
+should carry over into any game making application.
 
 This guide is structured to get you up and running with :py:class:``arcade.Camera2D`` as quickly as possible before doing
 a deep dive. If you would like a fuller understanding of Arcade's cameras it is strongly advised you follow through every example
@@ -17,6 +17,9 @@ If you have any further questions do not hesitate to reach out on the Arcade dis
 
 Cameras 101
 -----------
+
+The traditional camera captures the light that bounces off of objects and hits the sensor inside. Camera's in videogames
+try to replicate some of this behaviour by turning objects in your game into pixels on screen. 
 
 What is a camera?
 
@@ -42,7 +45,7 @@ grips, rotating, project, unproject, near/far plane.
 
 This is all you need to use everything Camera2D provides, but I recommend reading the rest atleast once.
 
-~ This is all arcdae except the project unproject stuff that's super useful for other systems
+~ This is all arcade except the project unproject stuff that's super useful for other systems
 
 Coordinate Spaces
 -----------------
