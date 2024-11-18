@@ -199,9 +199,12 @@ from .tilemap import load_tilemap
 from .tilemap import read_tmx
 from .tilemap import TileMap
 
-from .pymunk_physics_engine import PymunkPhysicsEngine
-from .pymunk_physics_engine import PymunkPhysicsObject
-from .pymunk_physics_engine import PymunkException
+try:
+    from .pymunk_physics_engine import PymunkPhysicsEngine
+    from .pymunk_physics_engine import PymunkPhysicsObject
+    from .pymunk_physics_engine import PymunkException
+except ImportError:
+    print("Pymunk is not installed. Pymunk physics engine will not be available.")
 
 from .version import VERSION
 

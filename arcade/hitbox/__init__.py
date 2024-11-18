@@ -6,17 +6,22 @@ from arcade.types import Point2List
 
 from .base import HitBox, HitBoxAlgorithm, RotatableHitBox
 from .bounding_box import BoundingHitBoxAlgorithm
-from .pymunk import PymunkHitBoxAlgorithm
 from .simple import SimpleHitBoxAlgorithm
 
 #: The simple hit box algorithm.
 algo_simple = SimpleHitBoxAlgorithm()
-#: The detailed hit box algorithm.
-algo_detailed = PymunkHitBoxAlgorithm()
 #: The bounding box hit box algorithm.
 algo_bounding_box = BoundingHitBoxAlgorithm()
 #: The default hit box algorithm.
 algo_default = algo_simple
+
+#: The detailed hit box algorithm, if pymunk available.
+try:
+    from .pymunk import PymunkHitBoxAlgorithm
+    algo_detailed = PymunkHitBoxAlgorithm()
+except ImportError:
+    algo_detailed = None
+    print("Warning: pymunk is not installed. PymunkHitBoxAlgorithm will not be available.")
 
 
 # Temporary functions for backwards compatibility
@@ -46,6 +51,7 @@ def calculate_hit_box_points_detailed(
             How detailed to make the hit box. There's a
             trade-off in number of points vs. accuracy.
     """
+    assert algo_detailed, "PymunkHitBoxAlgorithm is not available."
     return algo_detailed.calculate(image, detail=hit_box_detail)
 
 
