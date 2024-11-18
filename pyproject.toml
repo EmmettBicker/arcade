@@ -4,13 +4,14 @@ description = "Arcade Game Development Library"
 readme = "README.md"
 authors = [{ name = "Paul Vincent Craven", email = "paul@cravenfamily.com" }]
 license = { file = "license.rst" }
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
