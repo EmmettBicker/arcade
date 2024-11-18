@@ -18,9 +18,10 @@ algo_default = algo_simple
 #: The detailed hit box algorithm, if pymunk available.
 try:
     from .pymunk import PymunkHitBoxAlgorithm
+
     algo_detailed = PymunkHitBoxAlgorithm()
 except ImportError:
-    algo_detailed = None
+    algo_detailed = None  # type: ignore
     print("Warning: pymunk is not installed. PymunkHitBoxAlgorithm will not be available.")
 
 
