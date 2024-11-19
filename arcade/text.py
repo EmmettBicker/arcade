@@ -4,6 +4,7 @@ Drawing text with pyglet label
 
 from __future__ import annotations
 
+from ctypes import c_int, c_ubyte
 from pathlib import Path
 from typing import Any, Union
 
@@ -18,7 +19,7 @@ from arcade.types import Color, Point, RGBOrA255
 __all__ = ["load_font", "Text", "create_text_sprite", "draw_text"]
 
 
-class ArcadeTextLayoutGroup(pyglet.text.layout.TextLayoutGroup):
+class _ArcadeTextLayoutGroup(pyglet.text.layout.TextLayoutGroup):
     """Create a text layout rendering group.
 
     Overrides pyglet blending handling to allow for additive blending.
@@ -29,45 +30,40 @@ class ArcadeTextLayoutGroup(pyglet.text.layout.TextLayoutGroup):
     _prev_blend_func: tuple[int, int, int, int]
 
     def set_state(self) -> None:
-        import pyglet.gl as gl
-        from ctypes import c_int, c_ubyte
-
         self.program.use()
         self.program["scissor"] = False
 
-        gl.glActiveTexture(gl.GL_TEXTURE0)
-        gl.glBindTexture(self.texture.target, self.texture.id)
+        pyglet.gl.glActiveTexture(pyglet.gl.GL_TEXTURE0)
+        pyglet.gl.glBindTexture(self.texture.target, self.texture.id)
 
         blend = c_ubyte()
-        gl.glGetBooleanv(gl.GL_BLEND, blend)
+        pyglet.gl.glGetBooleanv(pyglet.gl.GL_BLEND, blend)
         self._prev_blend = bool(blend.value)
 
         src_rgb = c_int()
         dst_rgb = c_int()
         src_alpha = c_int()
         dst_alpha = c_int()
-        gl.glGetIntegerv(gl.GL_BLEND_SRC_RGB, src_rgb)
-        gl.glGetIntegerv(gl.GL_BLEND_DST_RGB, dst_rgb)
-        gl.glGetIntegerv(gl.GL_BLEND_SRC_ALPHA, src_alpha)
-        gl.glGetIntegerv(gl.GL_BLEND_DST_ALPHA, dst_alpha)
+        pyglet.gl.glGetIntegerv(pyglet.gl.GL_BLEND_SRC_RGB, src_rgb)
+        pyglet.gl.glGetIntegerv(pyglet.gl.GL_BLEND_DST_RGB, dst_rgb)
+        pyglet.gl.glGetIntegerv(pyglet.gl.GL_BLEND_SRC_ALPHA, src_alpha)
+        pyglet.gl.glGetIntegerv(pyglet.gl.GL_BLEND_DST_ALPHA, dst_alpha)
 
         self._prev_blend_func = (src_rgb.value, dst_rgb.value, src_alpha.value, dst_alpha.value)
 
-        gl.glEnable(gl.GL_BLEND)
-        gl.glBlendFuncSeparate(
-            gl.GL_SRC_ALPHA,
-            gl.GL_ONE_MINUS_SRC_ALPHA,
-            gl.GL_ONE,
-            gl.GL_ONE,
+        pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
+        pyglet.gl.glBlendFuncSeparate(
+            pyglet.gl.GL_SRC_ALPHA,
+            pyglet.gl.GL_ONE_MINUS_SRC_ALPHA,
+            pyglet.gl.GL_ONE,
+            pyglet.gl.GL_ONE,
         )
 
     def unset_state(self) -> None:
-        import pyglet.gl as gl
-
         if not self._prev_blend:
-            gl.glDisable(gl.GL_BLEND)
+            pyglet.gl.glDisable(pyglet.gl.GL_BLEND)
 
-        gl.glBlendFuncSeparate(
+        pyglet.gl.glBlendFuncSeparate(
             self._prev_blend_func[0],
             self._prev_blend_func[1],
             self._prev_blend_func[2],
@@ -76,7 +72,7 @@ class ArcadeTextLayoutGroup(pyglet.text.layout.TextLayoutGroup):
         self.program.stop()
 
 
-pyglet.text.layout.TextLayout.group_class = ArcadeTextLayoutGroup
+pyglet.text.layout.TextLayout.group_class = _ArcadeTextLayoutGroup
 
 
 def load_font(path: str | Path) -> None:
