@@ -25,8 +25,8 @@ class ArcadeTextLayoutGroup(pyglet.text.layout.TextLayoutGroup):
     Furthermore, it resets the blend function to the previous state.
     """
 
-    _prev_blend = None
-    _prev_blend_func = None
+    _prev_blend: bool
+    _prev_blend_func: tuple[int, int, int, int]
 
     def set_state(self) -> None:
         import pyglet.gl as gl

@@ -75,7 +75,7 @@ class UIWidget(EventDispatcher, ABC):
     _padding_left = Property(0)
     _strong_background = Property(False)
     """If True, the background will clear the surface, even if it is not fully opaque.
-    This is not part of the public API and subject to change. 
+    This is not part of the public API and subject to change.
     UILabel have a strong background if set.
     """
 
