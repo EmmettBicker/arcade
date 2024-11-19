@@ -25,7 +25,7 @@ from arcade.gui.surface import Surface
 from arcade.gui.widgets import UIWidget
 from arcade.gui.widgets.layout import UIAnchorLayout
 from arcade.text import FontNameOrNames
-from arcade.types import LBWH, RGBA255, Color, RGBOrA255
+from arcade.types import Color, LBWH, RGBA255, RGBOrA255
 
 
 class UILabel(UIWidget):
@@ -119,6 +119,8 @@ class UILabel(UIWidget):
             multiline=multiline,
             **kwargs,
         )
+        self._strong_background = True
+
         if adaptive_multiline:
             # +1 is required to prevent line wrap
             width = self._label.content_width + 1
