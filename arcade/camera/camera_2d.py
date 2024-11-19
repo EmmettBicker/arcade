@@ -569,7 +569,6 @@ class Camera2D:
 
     @projection.setter
     def projection(self, value: Rect) -> None:
-
         # Unpack and validate
         if not value:
             raise ZeroProjectionDimension((f"Projection area is 0, {value.lrbt}"))
