@@ -15,7 +15,7 @@ equal to one pixel of the sprite's source texture. This does not necessarily equ
 Screen Space
 ^^^^^^^^^^^^
 The final positions of anything drawn to screen is in screen space. The mouse positions returned by window
-events like `on_mouse_press` are also in screen space. Moving 1 unit in screen space is equivalent to moving
+events like :py:func:`on_mouse_press` are also in screen space. Moving 1 unit in screen space is equivalent to moving
 one pixel. Often positions in screen space are integer values, but this is not a strict rule.
 
 View Matrices
@@ -78,23 +78,21 @@ Key Objects
 -----------
 
 - Objects which modify the view and perspective matrices are called "Projectors"
-  - `arcade.camera.Projector` is a `Protocol` used internally by arcade
-  - `Projector.use()` sets the internal projection and view matrices used by Arcade and Pyglet
-  - `Projector.activate()` is the same as use, but works within a context manager using the `with` syntax
-  - `Projector.unproject(screen_coordinate)` 
-provides a way to find the world position of any pixel position on screen.
-  - `Projector.project(world_coordinate)` 
-provides a way to find the screen position of any position in the world.
+
+  - :py:class:`arcade.camera.Projector` is a :py:class:`Protocol` used internally by arcade
+  - :py:func:`Projector.use()` sets the internal projection and view matrices used by Arcade and Pyglet
+  - :py:func:`Projector.activate()` is the same as use, but works within a context manager using the ``with`` syntax
+  - :py:func:`Projector.unproject(screen_coordinate)` provides a way to find the world position of any pixel position on screen.
+  - :py:func:`Projector.project(world_coordinate)` provides a way to find the screen position of any position in the world.
+
 - There are multiple data types which provide the information required to make view and projection matrices
-  - `camera.CameraData` holds the position, forward, and up vectors along with a zoom value used to create the 
-view matrix
-  - `camera.OrthographicProjectionData` holds the left, right, bottom, top, near, far values needed to create a
-orthographic projection matrix
-  - `camera.PerspectiveProjectionData` holds the aspect ratio, field of view, near and far needed to create a
-perspective projection matrix.
+
+  - :py:class:`camera.CameraData` holds the position, forward, and up vectors along with a zoom value used to create the view matrix
+  - :py:class:`camera.OrthographicProjectionData` holds the left, right, bottom, top, near, far values needed to create a orthographic projection matrix
+  - :py:class:`camera.PerspectiveProjectionData` holds the aspect ratio, field of view, near and far needed to create a perspective projection matrix.
+
 - There are three primary `Projectors` in `arcade.camera`
-  - `arcade.camera.Camera2D` is locked to the x-y plane and is perfect for most use cases within arcade.
-  - `arcade.camera.OrthographicProjector` can be freely positioned in 3D space, but the scale of objects does not
-depend on the distance to the projector
-  - `arcade.camera.PerspectiveProjector` can be freely position in 3D space,
-and objects look smaller the further from the camera they are
+
+  - :py:class:`arcade.camera.Camera2D` is locked to the x-y plane and is perfect for most use cases within arcade.
+  - :py:class:`arcade.camera.OrthographicProjector` can be freely positioned in 3D space, and the scale of objects does not depend on the distance from the projector.
+  - :py:class:`arcade.camera.PerspectiveProjector` can be freely positioned in 3D space, and objects look smaller the further from the camera they are.
