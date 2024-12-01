@@ -329,7 +329,7 @@ class Camera2D:
         x, y = self._projection_data.rect.x, self._projection_data.rect.y
         self._projection_data.rect = XYWH(x, y, self.viewport_width, self.viewport_height)
 
-    def match_screen(
+    def match_window(
         self,
         viewport: bool = True,
         projection: bool = True,
@@ -338,8 +338,8 @@ class Camera2D:
         aspect: float | None = None,
     ) -> None:
         """
-        Sets the viewport to the size of the screen.
-        Should be called when the screen is resized.
+        Sets the viewport to the size of the window.
+        Should be called when the window is resized.
 
         Args:
             and_projection: Flag whether to also equalize the projection to the viewport.
@@ -375,23 +375,23 @@ class Camera2D:
         Sets the viewport to the size of the Camera2D's render target.
 
         Args:
-            projection: Flag whether to also equalize the projection to the viewport.
-                On by default
-            scissor: Flag whether to also equalize the scissor box to the viewport.
-                On by default
-            position: Flag whether to also center the camera to the viewport.
+            viewport: Flag whether to equalise the viewport to the area of the render target
+            projection: Flag whether to equalise the size of the projection to
+                match the render target
+            The projection center stays fixed, and the new projection matches only in size.
+            scissor: Flag whether to update the scissor value.
+            position: Flag whether to also center the camera to the value.
                 Off by default
-            aspect_ratio: The ratio between width and height that the viewport should
-                be constrained to. If unset then the viewport just matches the window
-                size. The aspect ratio describes how much larger the width should be
-                compared to the height. i.e. for an aspect ratio of ``4:3`` you should
+            aspect_ratio: The ratio between width and height that the value should
+                be constrained to. i.e. for an aspect ratio of ``4:3`` you should
                 input ``4.0/3.0`` or ``1.33333...``. Cannot be equal to zero.
+                If unset then the value will not be updated.
         Raises:
             ValueError: Will be raised if the Camera2D was has no render target.
         """
         if self.render_target is None:
             raise ValueError(
-                "Tried to match a non-exsistant render target. Please use `match_screen` instead"
+                "Tried to match a non-exsistant render target. Please use `match_window` instead"
             )
 
         self.update_values(
@@ -419,7 +419,7 @@ class Camera2D:
         Args:
             value: The rect that the values will be derived from.
             viewport: Flag whether to equalise the viewport to the value.
-            and_projection: Flag whether to equalise the size of the projection to match the value.
+            projection: Flag whether to equalise the size of the projection to match the value.
             The projection center stays fixed, and the new projection matches only in size.
             scissor: Flag whether to update the scissor value.
             position: Flag whether to also center the camera to the value.

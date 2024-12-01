@@ -152,7 +152,7 @@ class GameView(arcade.View):
 
     def on_resize(self, width: int, height: int):
         super().on_resize(width, height)
-        self.camera.match_screen(and_projection=True)
+        self.camera.match_window()
         full_width_size = (width, SCALED_BG_LAYER_HEIGHT_PX)
 
         # We can iterate through a background group,

@@ -432,12 +432,12 @@ class UIManager(EventDispatcher):
         """Resize the UIManager and all of its surfaces."""
         # resize ui camera
         bottom_left = self.camera.bottom_left
-        self.camera.match_screen()
+        self.camera.match_window()
         self.camera.bottom_left = bottom_left
 
         # resize render to surface camera
         bottom_left = self._render_to_surface_camera.bottom_left
-        self._render_to_surface_camera.match_screen()
+        self._render_to_surface_camera.match_window()
         self._render_to_surface_camera.bottom_left = bottom_left
 
         scale = self.window.get_pixel_ratio()
