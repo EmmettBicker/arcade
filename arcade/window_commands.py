@@ -97,7 +97,7 @@ def close_window() -> None:
     gc.collect()
 
 
-def run(view: View | None = None):
+def run(view: View | None = None) -> None:
     """
     Run the main loop. Optionally start with a specified view.
 
@@ -107,7 +107,7 @@ def run(view: View | None = None):
     it will start to dispatch events such as ``on_draw`` and ``on_update``.
 
     Args:
-            view: The view to display when starting the run. Defaults to None.
+        view: The view to display when starting the run. Defaults to None.
     """
     window = get_window()
 
